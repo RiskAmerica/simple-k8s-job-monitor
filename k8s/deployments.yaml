@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-k8s-job-monitor
+  namespace: $namespace
+  labels:
+    app: simple-k8s-job-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-k8s-job-monitor
+  template:
+    metadata:
+      labels:
+        app: simple-k8s-job-monitor
+    spec:
+      containers:
+        - name: simple-k8s-job-monitor
+          image: $imageName
+          env:
+            - name: SLACK_WEBHOOK_URL
+              value : ""
+            - name: CURRENT_PROJECT
+              value : ""
+            - name: CHANNEL
+              value : ""
