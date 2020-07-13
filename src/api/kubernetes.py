@@ -30,7 +30,7 @@ class KubernetesApi:
                 if cron_job.status.conditions[0].last_transition_time >= max([startdate,calculated_date]):
                     jobsVigentes.append(cron_job)
             else:
-                print (datetime.datetime.now(),'job '+ cron_job.metadata.name + ' in execucion')
+                print (datetime.datetime.now(),'job '+ cron_job.metadata.name + ' ongoing')
                 jobsVigentes.append(cron_job)
         return jobsVigentes
 
