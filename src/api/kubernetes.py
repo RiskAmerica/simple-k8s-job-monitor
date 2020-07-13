@@ -25,7 +25,6 @@ class KubernetesApi:
             print ("Exception when calling CoreV1Api->list_job_for_all_namespaces: %s\n" % e)
         for cron_job in jobs_list.items:
             if cron_job.status.active is None:
-                self.get_pod_job(cron_job)
                 if cron_job.status.conditions[0].last_transition_time.tzinfo is not None:
                     cron_job.status.conditions[0].last_transition_time = cron_job.status.conditions[0].last_transition_time.replace(tzinfo=None)
                 if cron_job.status.conditions[0].last_transition_time >= max([startdate,calculated_date]):
