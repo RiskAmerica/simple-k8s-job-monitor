@@ -9,9 +9,9 @@ api = KubernetesApi()
 slack_client = Slack(webhook_url,project,channel)
 
 if __name__ == '__main__':
-    print(startdate,'monitor started')
     jobsNotificados = []
     startdate = datetime.datetime.now()
+    print(startdate,'monitor started')
     while True:
         jobsVigentes = api.get_all_job_status(startdate)
         for job in jobsVigentes:
